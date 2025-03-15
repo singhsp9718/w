@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Calculator</title>
+</head>
+<body>
+    <h2>Price Calculator</h2>
+    <label>Given Weight (gm): </label>
+    <input type="number" id="givenWeight" placeholder="e.g., 80"><br><br>
+
+    <label>Given Price (INR): </label>
+    <input type="number" id="givenPrice" placeholder="e.g., 50"><br><br>
+
+    <label>Desired Weight (gm): </label>
+    <input type="number" id="desiredWeight" placeholder="e.g., 100"><br><br>
+
+    <button onclick="calculatePrice()">Calculate</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calculatePrice() {
+            let givenWeight = parseFloat(document.getElementById("givenWeight").value);
+            let givenPrice = parseFloat(document.getElementById("givenPrice").value);
+            let desiredWeight = parseFloat(document.getElementById("desiredWeight").value);
+
+            if (givenWeight > 0 && givenPrice > 0 && desiredWeight > 0) {
+                let pricePerGram = givenPrice / givenWeight;
+                let finalPrice = pricePerGram * desiredWeight;
+                document.getElementById("result").innerHTML = "Price for " + desiredWeight + " gm: " + finalPrice.toFixed(2) + " INR";
+            } else {
+                document.getElementById("result").innerHTML = "Please enter valid values!";
+            }
+        }
+    </script>
+</body>
+</html>
